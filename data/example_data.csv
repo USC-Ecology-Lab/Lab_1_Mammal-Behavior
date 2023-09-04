@@ -1,0 +1,12 @@
+category,action,num_events,total_mins
+conflict,chasing,19,37
+conflict,running_squirrel,24,35
+conflict,taunting,10,3
+avoidance,running_other,4,2
+avoidance,running_predator,1,1
+forage,searching,13,45
+forage,collecting_food,6,2
+forage,storing_food,5,4
+forage,jumping,15,6
+rest,eating,5,10
+rest,resting,7,35
