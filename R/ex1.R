@@ -32,17 +32,6 @@ ggplot(data = sq_summary) +
   theme(legend.position = 'none')
 
 
-##
-# More detailed figure ##
-##
-
-
-# create a custom color scale for your data
-# note this must be customized for your defined actions
-
-
-
-
 ###
 # Chi-squared analysis
 ####
@@ -83,3 +72,39 @@ expected_proportions <- c(0.1, 0.3,.3,.3)
 expected_model <- total_observation_time * expected_proportions
 chisq.test(x = sq_summary$total_time, p = expected_model,
            rescale.p = T)
+
+
+##
+# More detailed figure ##
+##
+
+
+# create a custom color scale for your data
+# note this must be customized for your defined actions
+
+colors = c(
+  `chasing` = '#D81B60',
+  `running_squirrel` = '#C75780',
+  `taunting` = "#BF7993",
+  `running_other` = "#1E88E5",
+  `running_predator` = "#66A8E2",
+  `searching` = "#FFC107",
+  `collecting_food` = "#FDD458",
+  `storing_food` = "#FFE597",
+  `jumping` = "#FFEFBF",
+  `eating` = '#004D40',
+  `resting` = '#4D7F77'
+)
+
+ggplot(sqdf) + 
+  geom_bar(aes(x = category, y = total_mins,
+               fill = action),
+           stat = 'identity', position = 'stack') +
+  scale_fill_manual(values = colors)
+
+
+ggplot(sqdf) + 
+  geom_bar(aes(x = category, y = num_events,
+               fill = action),
+           stat = 'identity', position = 'stack') +
+  scale_fill_manual(values = colors)
